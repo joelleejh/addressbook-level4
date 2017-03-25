@@ -35,8 +35,9 @@ public interface ReadOnlyTask {
                         // checks
                         // here
                         // onwards
+                        && other.getDate().equals(this.getDate())
                         && other.getStartTime().equals(this.getStartTime())
-                        && other.getEndTime().equals(this.getEndTime()) && other.getDate().equals(this.getDate()));
+                        && other.getEndTime().equals(this.getEndTime()));
     }
 
     /**

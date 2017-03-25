@@ -259,6 +259,10 @@ public class UpdateCommandParser {
             updateTaskDescriptor.setStartTime(ParserUtil.parseStartTime(startTime));
             updateTaskDescriptor.setEndTime(ParserUtil.parseEndTime(endTime));
 
+            if (!updateTaskDescriptor.isAnyFieldUpdated()) {
+                return new IncorrectCommand(UpdateCommand.MESSAGE_NOT_UPDATED);
+            }
+            
             // updateTaskDescriptor.setCategories(parseCategoriesForUpdate(
             // ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_CATEGORY))));
         } catch (IllegalValueException ive) {
@@ -275,9 +279,6 @@ public class UpdateCommandParser {
                     + "Type HELP for user guide with detailed explanations of all commands");
         }
 
-        if (!updateTaskDescriptor.isAnyFieldUpdated()) {
-            return new IncorrectCommand(UpdateCommand.MESSAGE_NOT_UPDATED);
-        }
         return new UpdateCommand(index.get(), updateTaskDescriptor);
     }
 

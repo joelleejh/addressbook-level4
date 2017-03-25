@@ -78,10 +78,15 @@ public class TaskCardHandle extends GuiHandle {
     } */
 
     public boolean isSameTask(ReadOnlyTask task) {
-        return getFullTaskName().equals(task.getTaskName())
-                && getDate().equals(task.getDate())
-                && getStartTime().equals(task.getStartTime())
-                && getEndTime().equals(task.getEndTime());
+        return task != null
+                && getFullTaskName().equals(task.getTaskName().toString())
+                && getDate().equals(task.getDate().toString())
+                && getStartTime().equals(task.getStartTime().toString())
+                && getEndTime().equals(task.getEndTime().toString());
+/*                && task.getTaskName().equals(getFullTaskName())
+                && task.getDate().equals(getDate())
+                && task.getStartTime().equals(getStartTime())
+                && task.getEndTime().equals(getEndTime()); */
 //                && getCategories().equals(getCategories(person.getCategories()));
     }
 
